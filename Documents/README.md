@@ -88,7 +88,7 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
   - Playwright v1.58.2
   
 - Build tool: Vite v5
-- Code automation: Husky v9.1.7
+- Code automation task tool: Husky v9.1.7
 -  Listing & Formating: 
    - Prettier version v3.8.1
    - EsLint version v10.0.2
