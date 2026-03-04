@@ -76,28 +76,29 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
 ### 1.1 Technology Stack
 
 - Application type: Web app
-- Web framework: ReactJs version 19.2
-- Web server: NodeJs v2 HTTPS 
-- Language: TypeScript version 5.9.3
-- Routing: React Router version 6.x
-- Data validation: Zod 4.3.6
+- Web framework: ReactJs v19.2
+- Web server: Vite Dev Server v5
+- Language: TypeScript v5.9.3
+- Routing: React Router v6.x
+- Data validation: Zod v4.3.6
   
 - Unit testing: 
-  - Jest 30.2.0
+  - Jest v30.2.0
 - Integration testing: 
-  - Playwright
+  - Playwright v1.58.2
   
-- Build tool: Vite version 5
+- Build tool: Vite v5
 - Code automation: Husky v9.1.7
+-  Listing & Formating: 
+   - Prettier version v3.8.1
+   - EsLint version v10.0.2
+
 - Cloud and Deployment:
-  - Cloud: Azure Cloud Services
-  - Hosting: Azure App Service
+  - Cloud: Azure Cloud Services 
+  - Hosting: Azure App Service (PaaS)
   
 - Code repositories: Azure DevOps Repos
 - CI/CD: Azure DevOps Pipelines
-- Listing & Formating: 
-  - Prettier version 3.8.1
-  - EsLint version 10.0.2
 
 - Environments:
   - Development
