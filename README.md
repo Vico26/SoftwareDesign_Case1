@@ -113,27 +113,61 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
   - Azure Application Insights
 ### 1.2 UX UI Analysis
 #### Core business 
-1.  Describe the sequence of actions that the user performs and how the system responds in order to generate the DUA document.
 
-2. The user accesses the application and authenticates into the system.
+1. The user accesses the application and authenticates into the system.
 
-3. The user provides the location containing the commercial documentation required for the customs declaration.
+2. The user provides the location containing the commercial documentation required for the customs declaration.
 
-4. The system scans the provided location and identifies supported document types such as spreadsheets, text documents, PDFs, and scanned images.
+3. The system scans the provided location and identifies supported document types such as spreadsheets, text documents, PDFs, and scanned images.
 
-5. The system reads the documents and extracts textual information using document parsing and optical character recognition when necessary.
+4. The system reads the documents and extracts textual information using document parsing and optical character recognition when necessary.
 
-6. The extracted information is analyzed using semantic interpretation models that identify relevant customs data such as importer information, supplier details, product descriptions, quantities, invoice data, transportation details, and country of origin.
+5. The extracted information is analyzed using semantic interpretation models that identify relevant customs data such as importer information, supplier details, product descriptions, quantities, invoice data, transportation details, and country of origin.
 
-7. The system maps the identified information into the corresponding fields defined by the official DUA template.
+6. The system maps the identified information into the corresponding fields defined by the official DUA template.
 
-8. The system validates the consistency of the extracted information, checking elements such as value totals, currencies, and date coherence.
+7. The system validates the consistency of the extracted information, checking elements such as value totals, currencies, and date coherence.
 
-9. Fields with uncertain or ambiguous data are flagged for later verification.
+8. Fields with uncertain or ambiguous data are flagged for later verification.
 
-10. The processed information is prepared for user review and document generation.
+9.  The processed information is prepared for user review and document generation.
 #### Login
-#### Monitoreo del avance
-#### Obtencion del resultado
+1. The user provides authentication credentials to access the application.
+
+2. The system validates the credentials against the authentication service.
+
+3. If the credentials are valid, the system grants access to the application and initializes the user session.
+
+4. If the credentials are invalid, access is denied and the user is requested to attempt authentication again.
+- Wireframe proposed:![Login](/Media/Login.png)
+#### Process Monitoring
+1. After submitting the documentation for processing, the user observes the status of the analysis process.
+
+2. The system reads each document and extracts relevant information.
+
+3. The system updates the processing status as each document is analyzed.
+
+4. If a document cannot be processed, the system records the issue and continues processing the remaining documents.
+
+5. Once all documents have been analyzed, the system prepares the extracted data for validation.
+- Wireframe proposed: ![Process Monitoring](/Media/Process%20Monitoring.png)
+#### Result retrival
+1. The user reviews the extracted data that has been mapped to the DUA structure.
+
+2. The user verifies the detected information and corrects any fields that require manual validation.
+
+3. Once the data is confirmed, the user requests the generation of the final DUA document.
+
+4. The system generates a structured document based on the official DUA template.
+
+5. The final document is made available to the user for download and further submission to customs authorities.
+- Wireframe proposed: ![Result retrival](/Media/Result%20retrival.png)
 #### Logout
+1. The user decides to terminate the session.
+
+2. The system invalidates the active session and removes authentication credentials.
+
+3. The user is redirected to the authentication page.
+- Wireframe proposed: ![Logout](/Media/Logout.png)
 #### Wireframes
+
