@@ -111,3 +111,29 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
 - Observability framework:
   - Azure Monitor
   - Azure Application Insights
+### 1.2 UX UI Analysis
+#### Core business 
+1.  Describe the sequence of actions that the user performs and how the system responds in order to generate the DUA document.
+
+2. The user accesses the application and authenticates into the system.
+
+3. The user provides the location containing the commercial documentation required for the customs declaration.
+
+4. The system scans the provided location and identifies supported document types such as spreadsheets, text documents, PDFs, and scanned images.
+
+5. The system reads the documents and extracts textual information using document parsing and optical character recognition when necessary.
+
+6. The extracted information is analyzed using semantic interpretation models that identify relevant customs data such as importer information, supplier details, product descriptions, quantities, invoice data, transportation details, and country of origin.
+
+7. The system maps the identified information into the corresponding fields defined by the official DUA template.
+
+8. The system validates the consistency of the extracted information, checking elements such as value totals, currencies, and date coherence.
+
+9. Fields with uncertain or ambiguous data are flagged for later verification.
+
+10. The processed information is prepared for user review and document generation.
+#### Login
+#### Monitoreo del avance
+#### Obtencion del resultado
+#### Logout
+#### Wireframes
