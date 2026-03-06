@@ -170,4 +170,9 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
 3. The user is redirected to the authentication page.
 - Wireframe proposed: ![Logout](/Media/Logout.png)
 
+#### Wireframes
+Here's an esxtra wireframe intented to configurate the data that the user sends the app web.
+Data source configuration
+![Data Source Configuration](/Media/Config.png)
+
 
