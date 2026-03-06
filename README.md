@@ -169,5 +169,5 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
 
 3. The user is redirected to the authentication page.
 - Wireframe proposed: ![Logout](/Media/Logout.png)
-#### Wireframes
+
 
