@@ -156,7 +156,7 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
 3. If the credentials are valid, the system grants access to the application and initializes the user session.
 
 4. If the credentials are invalid, access is denied and the user is requested to attempt authentication again.
-- Wireframe proposed:![Login](/Media/Login.png)
+- Wireframe proposed:![Login](Media/Login.png)
 #### Process Monitoring
 1. After submitting the documentation for processing, the user observes the status of the analysis process.
 
@@ -167,7 +167,7 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
 4. If a document cannot be processed, the system records the issue and continues processing the remaining documents.
 
 5. Once all documents have been analyzed, the system prepares the extracted data for validation.
-- Wireframe proposed: ![Process Monitoring](/Media/Process%20Monitoring.png)
+- Wireframe proposed: ![Process Monitoring](Media/Process%20Monitoring.png)
 #### Result retrival
 1. The user reviews the extracted data that has been mapped to the DUA structure.
 
@@ -178,14 +178,14 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
 4. The system generates a structured document based on the official DUA template.
 
 5. The final document is made available to the user for download and further submission to customs authorities.
-- Wireframe proposed: ![Result retrival](/Media/Result%20retrival.png)
+- Wireframe proposed: ![Result retrival](Media/Result%20retrival.png)
 #### Logout
 1. The user decides to terminate the session.
 
 2. The system invalidates the active session and removes authentication credentials.
 
 3. The user is redirected to the authentication page.
-- Wireframe proposed: ![Logout](/Media/Logout.png)
+- Wireframe proposed: ![Logout](Media/Logout.png)
 
 ### User profiles
 
@@ -213,7 +213,7 @@ Logout
 The prototype was shared with participants through a Figma link, allowing them to interact with the interface and simulate the main workflow of the system.
 
 Prototype reference:
-https://www.figma.com/make/vSs0bAkQqgcF7eKFAex6eS/DUA-Streamliner-Automation?t=r4zk6ta8m28VLHmm-20&fullscreen=1
+https://final-piano-64641647.figma.site/
 
 ### Testing Participants
 | Participant | Profile | Experience with Document Processing | Notes |
@@ -222,6 +222,8 @@ https://www.figma.com/make/vSs0bAkQqgcF7eKFAex6eS/DUA-Streamliner-Automation?t=r
 | Aura Martínez | Business administrator| Medium | Familiar with customs declaration processes |
 | Leopoldo Martínez | Electrical engineer and farmer | Low | Experience handling commercial documentation |
 | Gastón Molina | General web user | Medium | Familiar with web applications but not with customs workflows |
+
+---
 
 ## Results
 | Task | Success Rate | Average Time | Observations |
@@ -275,127 +277,36 @@ Responsive layouts are implemented using flexible containers and breakpoints to 
 ---
 ### Security
 
-Security in the frontend focuses on authentication, authorization, and session management.
+Authenticator server name: Dua_Streamline_VMM
 
-#### Authentication
+Authentication provider: Microsoft Entra ID
 
-Authentication is handled through a secure login flow that validates user credentials against an authentication service.
+Authentication model: Single Sign-On (SSO)
 
-Authentication tokens are stored securely and attached to API requests.
+Hosting security: Azure App Service Authentication (Easy Auth)
+
+Transport security: HTTPS with TLS 1.2
+
+Secret management: Azure Key Vault
+
+Identity management: Azure Managed Identity
+
+Session and caching support: Azure Cache for Redis
+
+Federated identity providers:
+- Google
+- Facebook
+
+Multi-Factor Authentication (MFA): Microsoft Entra ID 
 
 #### Authorization
 
-User roles define access permissions:
+Model: Role Based Access Control (RBAC)
 
-- Customs Expert
-- Administrative Operator
-- Technical Administrator
+| Role | Description |
+|-----|-------------|
+| Admin | manage users, system configuration |
+| CustomsExpert | validate DUA data |
+| Operator | upload documents |
 
-Role validation is performed before allowing access to protected routes.
-
-#### Session Management
-
-Sessions are managed using secure tokens.
-
-Session expiration automatically invalidates access and redirects users to the login screen.
-
-Protected routes ensure that only authenticated users can access application features.
-
----
-### Layered Design
-
-The frontend follows a layered architecture to separate responsibilities and improve maintainability.
-
-#### Presentation Layer
-
-Contains UI components responsible for rendering the interface.
-
-Examples:
-
-- Login page
-- Process monitoring page
-- Result validation page
-
-#### Application Layer
-
-Handles user interaction logic and state management.
-
-Examples:
-
-- Form validation
-- Processing state updates
-- UI event handling
-
-#### Service Layer
-
-Responsible for communication with backend services.
-
-Examples:
-
-- Document processing API calls
-- Authentication service requests
-- DUA generation requests
-
-#### Integration Layer
-
-Handles external service communication such as AI processing and document analysis APIs.
-
----
-### Design Patterns
-
-Several design patterns are applied in the frontend architecture.
-
-#### Observer Pattern
-
-Used to update the UI when document processing status changes.
-
-#### Singleton Pattern
-
-Applied to maintain a single instance of the API client used for backend communication.
-
-#### Factory Pattern
-
-Used to create standardized UI components such as validation fields based on data type.
-
-#### Strategy Pattern
-
-Used to handle different document validation rules depending on document source.
-
----
-### Project Scaffold
-
-The project structure follows a modular organization to improve maintainability and scalability.
-
-/src
- ├── assets
- │
- ├── components
- │    ├── Button
- │    ├── InputField
- │    ├── StatusIndicator
- │    └── DocumentList
- │
- ├── pages
- │    ├── Login
- │    ├── ProcessMonitoring
- │    ├── ResultValidation
- │
- ├── services
- │    ├── authService.ts
- │    ├── documentService.ts
- │    └── duaService.ts
- │
- ├── hooks
- │
- ├── styles
- │    ├── theme.ts
- │    └── global.css
- │
- ├── routes
- │    └── AppRouter.tsx
- │
- ├── utils
- │
- ├── App.tsx
- └── main.tsx
-
+All authentication tokens are validated through the Microsoft Entra ID identity platform.
