@@ -197,25 +197,42 @@ Extraction is contextual, not just keyword matching, allowing interpretation acr
 
 ---
 ### Usability testing with Figma prototype
+## UX Validation & Testing Tools
+- Prototyping: Figma
+ 
+- Usability Testing: Maze
 
+  - Test type: Website / Prototype testing
+
+- Heatmap & Interaction Analysis:Graphy
+
+    - Maze CSV exports are processed to generate
+
+- Validation: Zod
+
+## Testing
 To validate the proposed user experience, an interactive prototype of the application was created using Figma Make. The prototype simulated the main application flows, allowing early evaluation of navigation, task execution, and user understanding before implementing the frontend.
 
 The prototype includes the following screens:
 
-Login
+- Login 
+![loginFigma](Media/logInFigma.png)
 
-Document processing monitoring
+- Document processing monitoring
+![docProcessingFigma](Media/ReportFigma.png)
 
-Result validation and retrieval
+- Result validation and retrieval
+![resultFigma](Media/ResultsFigma.png)
 
-Logout
+- Logout  
+![LogoutFigma](Media/logoutFigma.png)
 
 The prototype was shared with participants through a Figma link, allowing them to interact with the interface and simulate the main workflow of the system.
 
 Prototype reference:
 https://final-piano-64641647.figma.site/
 
-### Testing Participants
+### Manual Testing Participants
 | Participant | Profile | Experience with Document Processing | Notes |
 |-------------|--------|--------------------------------------|------|
 | Gilda Castro | Computer engineer | High | Regularly works with commercial documentation |
@@ -236,70 +253,50 @@ https://final-piano-64641647.figma.site/
 | Logout from the system | 80% | 15 seconds | No usability issues detected, but the least experienced took a little longer to logout the system|
 
 ---
-### Component Design Strategy
+## Automatic Testing
+Figma prototype: https://final-piano-64641647.figma.site/ 
 
-The frontend follows a modular component-based architecture using React.
+Testing by Maze: https://app.maze.co/report/UX-Testing-DUAStreamline/19rtmy7mmoastms/233bcdd5
 
-Reusable UI components are created to ensure consistency across the application.
+Number of participants 
 
-#### Component reuse
-
-Reusable components include:
-
-- Button
-- InputField
-- StatusIndicator
-- DocumentList
-- ValidationField
-
-These components are placed in a shared components directory to allow reuse across pages.
-
-#### Style centralization
-
-Styling is centralized using a global theme configuration.
-
-- Global styles defined in `/styles`
-- Shared color palette for confidence indicators
-- Consistent typography and spacing
-
-#### Branding
-
-Brand identity elements such as colors, icons, and typography are defined in a centralized theme configuration.
-
-#### Internationalization
-
-Text labels are separated from components to allow future support for multiple languages.
-
-#### Responsiveness
-
-Responsive layouts are implemented using flexible containers and breakpoints to ensure usability across desktop and tablet devices.
 
 ---
+
 ### Security
 
-Authenticator server name: Dua_Streamline_VMM
+**Authenticator server name**: Dua_Streamline_VMM
 
-Authentication provider: Microsoft Entra ID
+---
+**Authentication provider**: Microsoft Entra ID
 
-Authentication model: Single Sign-On (SSO)
+---
+**Authentication model**: Single Sign-On (SSO)
 
-Hosting security: Azure App Service Authentication (Easy Auth)
+---
+**Hosting security**: Azure App Service Authentication (Easy Auth)
 
-Transport security: HTTPS with TLS 1.2
+---
+**Transport security**: HTTPS with TLS 1.2
 
-Secret management: Azure Key Vault
+---
+**Secret management**: Azure Key Vault
 
-Identity management: Azure Managed Identity
+---
+**Identity management**: Azure Managed Identity
 
-Session and caching support: Azure Cache for Redis
+---
+**Session and caching support**: Azure Cache for Redis
 
-Federated identity providers:
+---
+**Federated identity providers** :
 - Google
 - Facebook
 
 Multi-Factor Authentication (MFA): Microsoft Entra ID 
 
-#### Authorization
+---
+## Authorization
 
 Model: Role Based Access Control (RBAC)
 
@@ -310,3 +307,261 @@ Model: Role Based Access Control (RBAC)
 | Operator | upload documents |
 
 All authentication tokens are validated through the Microsoft Entra ID identity platform.
+
+## Data Protection
+Encryption at rest (Azure SQL + Storage)
+
+---
+
+## Layered design
+### Folder Structure
+Framework / Method: Component-Based Architecture  
+Technology: React + TypeScript 
+```
+src/
+│
+├── assets/                # Images, icons, static resources
+│
+├── components/            # Reusable UI components
+│   ├── Button/
+│   │   ├── Button.tsx
+│   │   ├── Button.types.ts
+│   │   └── Button.test.tsx
+│   │
+│   ├── InputField/
+│   ├── StatusIndicator/
+│   ├── DocumentList/
+│   └── ValidationField/
+│
+├── features/              # Feature-based modules
+│   ├── auth/
+│   ├── processing/
+│   ├── validation/
+│   └── document-generation/
+│
+├── pages/                 # Route-level views
+│   ├── Login.tsx
+│   ├── Dashboard.tsx
+│   ├── Monitor.tsx
+│   └── Results.tsx
+│
+├── hooks/                 # Custom React hooks
+│   ├── useAuth.ts
+│   ├── useProcessing.ts
+│   └── useValidation.ts
+│
+├── services/              # API / external services
+│   ├── api.ts
+│   ├── auth.service.ts
+│   └── dua.service.ts
+│
+├── context/               # Global state (React Context)
+│   └── AuthContext.tsx
+│
+├── schemas/               # Zod validation schemas
+│   └── dua.schema.ts
+│
+├── types/                 # Global TypeScript types
+│   └── index.ts
+│
+├── styles/                # Global styles & theme
+│   ├── theme.ts
+│   ├── variables.css
+│   └── globals.css
+│
+├── router/                # Route configuration
+│   └── index.tsx
+│
+├── utils/                 # Helper functions
+│   └── formatters.ts
+│
+├── App.tsx
+├── main.tsx
+└── vite-env.d.ts
+
+```
+## Architectural Approach
+
+Feature-Based Modular Architecture combined with Layered Responsibility design, implemented using:
+
+- React 19 (Component-Based UI)
+- TypeScript 5.9 (Static typing)
+- React Router v6 (Routing layer)
+- Zod v4 (Validation layer)
+- Microsoft Entra ID (Authentication – SSO + MFA)
+- Azure App Service Easy Auth (Hosting security)
+- Azure Key Vault (Secret management)
+- Azure Managed Identity (Secure service authentication)
+- Azure Cache for Redis (Session & caching support)
+- Azure Monitor & Application Insights (Observability)
+---
+## Frontend Execution Workflow
+```
+- User accesses web application (React + Vite)
+- Authentication handled via Microsoft Entra ID (SSO + MFA)
+- Access token validated through Azure App Service (Easy Auth)
+- RBAC applied (Admin / CustomsExpert / Operator)
+- Route guard enforces role-based access
+- User selects documentation folder
+- Processing request sent via Service Layer (API integration)
+- Backend performs AI-based semantic extraction
+- Extracted data returned to frontend
+- Zod schemas validate response structure
+- State updated in React state management layer
+- Validation view rendered with confidence indicators
+- User reviews and edits flagged fields
+- Final DUA generation request triggered
+- Generated document returned for download
+- Events and errors logged to Azure Application Insights
+- Session managed via Azure Cache for Redis
+```
+---
+## Mermaid Diagram-Execution Flow
+![executionFlow](Media/mermaid-diagramExecFlow.png)
+## Mermaid Diagram-Layered Architecture View
+![LayeredArchitectureView](Media/mermaid-diagram-Layered%20Architecture%20View.png)
+
+---
+## Design Patterns
+- **Abstraction of File Types Processing**
+  - Strategy Pattern (Primary recommendation)  
+  - Factory Method Pattern
+---
+- **Handling Long-Running Operations (AI Extraction / Parsing)**
+  - Observer Pattern (Primary recommendation)  
+  - Command Pattern
+---
+- **Single Instance Services (Auth, Config, Token Manager)**
+  - Singleton Pattern  
+  - ES Module Singleton Pattern (Primary recommendation for React + TypeScript)
+---
+- **Flexible Token Protection Strategy**
+  - Strategy Pattern (Primary recommendation)  
+  - Adapter Pattern
+---
+- **Reducing API Client Proliferation**
+  - Facade Pattern (Primary recommendation)  
+  - Proxy Pattern
+---
+- **Format-Agnostic Word Template Replacement**
+  - Template Method Pattern (Primary recommendation)  
+  - Visitor Pattern
+---
+
+# Backend Technology Stack 
+## Backend Architectural Model
+
+The backend follows a hybrid REST + event-driven architecture:
+```
+- REST API for synchronous operations
+- Azure Queue for task decoupling
+- Azure Functions for long-running AI processing
+- SQL Database for persistence
+- Redis for caching and session management
+```
+
+## Backend Execution Flow
+```
+- API receives processing request
+- Request validated via Zod
+- Job enqueued in Azure Queue
+- Azure Function consumes job
+- AI extraction performed
+- Results persisted in Azure SQL
+- Status updated in Redis cache
+- Client polls status endpoint
+- Document generation triggered
+- Final file stored and returned
+```
+---
+## Core Backend Stack
+- **Communication Protocol**
+  - HTTPS (TLS 1.2+)
+---
+
+- **API Architecture Style**
+  - REST
+---
+
+- **Backend Runtime**
+  - Node.js
+  - TypeScript
+---
+
+- **Web Framework**
+  - Fastify
+---
+
+- **Hosting Environment**
+  - Azure App Service
+---
+
+- **Asynchronous Processing**
+  - Azure Functions
+  - Azure Queue Storage
+---
+
+- **Authentication & Authorization**
+  - Microsoft Entra ID
+---
+
+- **Secret Management**
+  - Azure Key Vault
+---
+
+- **Caching Layer**
+  - Azure Cache for Redis
+---
+
+- **Monitoring & Observability**
+  - Azure Application Insights
+---
+## Supporting Infrastructure & Engineering Practices
+- **Database Layer**
+  - Azure SQL Database
+
+---
+- **ORM / Data Access**
+  - Prisma ORM
+
+---
+- **API Documentation**
+  - OpenAPI (Swagger)
+
+---
+- **CI / CD Pipeline**
+  - GitHub Actions
+
+---
+- **Containerization**
+  - Docker
+
+---
+- **Throttling & Rate Limiting**
+  - Fastify Rate Limit Plugin
+
+---
+- **CORS & Security Middleware**
+  - Fastify CORS Plugin
+  - Helmet
+
+---
+- **Logging**
+  - Pino Logger
+
+---
+- **Validation Layer**
+  - Zod
+
+---
+- **Connection Pooling**
+  - Managed via Prisma + Azure SQL
+
+---
+- **API Versioning**
+  - URL-based versioning (/api/v1)
+
+---
+- **Environment Configuration**
+  - dotenv
+---
