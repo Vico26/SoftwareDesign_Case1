@@ -258,11 +258,38 @@ Figma prototype: https://final-piano-64641647.figma.site/
 
 Testing by Maze: https://app.maze.co/report/UX-Testing-DUAStreamline/19rtmy7mmoastms/233bcdd5
 
-Number of participants 
+Number of participants 6.
 
+### Testing Participants profiles
+| Participant | Profile | Experience with Document Processing | Notes |
+|-------------|--------|--------------------------------------|------|
+| Gilda Castro | Computer engineer | High | Regularly works with commercial documentation |
+| Aura Martínez | Business administrator| Medium | Familiar with customs declaration processes |
+| Leopoldo Martínez | Electrical engineer and farmer | Low | Experience handling commercial documentation |
+| Gastón Molina | General web user | Medium | Familiar with web applications but not with customs workflows |
+| Jose Gabriel | Computer engineer student | High | Familiar with web applications but not with customs workflows |
+| Ruth | Electrical engineer student | Medium | Familiar with web applications but not with customs workflows |
 
 ---
+## Heatmaps
+Information regarded from Maze, where the data was exported by CSV, and uploaded to Graphy App to create the heatmaps.
 
+## Login
+![logInHeatMap](Media/login-20260322T034605.png)
+
+## Upload a document
+![uploadADocHeatMap](Media/upload_a_document-20260322T034840.png)
+
+## Review extracted data
+![reviewDataHeatMap](Media/review_the_extracted_data-20260322T035019.png)
+
+## Generate the DUA
+![generateDUAHeatMap](Media/generate_the_dua-20260322T035127.png)
+
+## Logout
+![logoutHeatMap](Media/logout-20260322T035403.png)
+
+---
 ### Security
 
 **Authenticator server name**: Dua_Streamline_VMM
